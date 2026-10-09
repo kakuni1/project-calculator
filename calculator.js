@@ -40,21 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
       activate(entry);
       console.log(userArray);
     });
-    button.addEventListener("mouseenter", () =>
-      button.style.setProperty("--opacity-level", 0.6),
-    );
-    button.addEventListener("mouseleave", () =>
-      button.style.setProperty("--opacity-level", 0.8),
-    );
+    button.addEventListener("mouseenter", () => button.style.setProperty("--opacity-level", 0.6));
+    button.addEventListener("mouseleave", () => button.style.setProperty("--opacity-level", 0.8));
   });
 
   function display(array, displayNumberOne, displayNumberTwo, displayOperator) {
     // check length, print "LIMIT" if too large
-    if (
-      array[1].length === 11 ||
-      array[2].length === 11 ||
-      array[0].length === 21
-    ) {
+    if (array[1].length === 11 || array[2].length === 11 || array[0].length === 21) {
       array[0] = "LIMIT";
       displayFirstNumber.style.setProperty("--color", "#f7768e");
       array[1] = "";
@@ -70,10 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       displayNumberOne.textContent = array[0];
       displayNumberTwo.textContent = "";
       displayOperator.textContent = ` ${array[3]} `;
-    } else if (
-      array[0] !== "0" ||
-      (array[0] === "0" && array[1] === "" && array[2] === "")
-    ) {
+    } else if (array[0] !== "0" || (array[0] === "0" && array[1] === "" && array[2] === "")) {
       displayNumberOne.textContent = array[0];
       displayOperator.textContent = "";
       displayNumberTwo.textContent = "";
@@ -117,9 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function calculate(array, operation) {
     if (array[1] !== "" && array[2] !== "") {
       array[0] = operate(array, operation).toString();
-      array[0] = (
-        array[0] % 1 === 0 ? parseInt(array[0]) : array[0]
-      ).toString();
+      array[0] = (array[0] % 1 === 0 ? parseInt(array[0]) : array[0]).toString();
       array[1] = array[0].toString();
       array[2] = "";
     }
@@ -163,149 +150,78 @@ document.addEventListener("DOMContentLoaded", function () {
         currentNumber = "0";
         if (userArray[1] === "-") userArray[1] = "";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "1":
         currentNumber = "1";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "2":
         currentNumber = "2";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "3":
         currentNumber = "3";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "4":
         currentNumber = "4";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "5":
         currentNumber = "5";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "6":
         currentNumber = "6";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "7":
         currentNumber = "7";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "8":
         currentNumber = "8";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "9":
         currentNumber = "9";
         enterValue(userArray, currentNumber, currentArrayPosition);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case ".":
         if (!userArray[currentArrayPosition].toString().includes(".")) {
-          userArray[currentArrayPosition] =
-            userArray[currentArrayPosition].toString() + ".";
+          userArray[currentArrayPosition] = userArray[currentArrayPosition].toString() + ".";
         }
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
       case "+":
         if (userArray[1] === "") return;
         currentArrayPosition = 2;
         userArray[3] = "+";
         if (currentOperation !== null) calculate(userArray, currentOperation);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         currentOperation = "add";
         break;
       case "-":
         if (currentArrayPosition === 1 && userArray[1] === "") {
           userArray[1] = "-";
-          display(
-            userArray,
-            displayFirstNumber,
-            displaySecondNumber,
-            displayOperator,
-          );
+          display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
           return;
         }
         if (userArray[1] === "") return;
         currentArrayPosition = 2;
         userArray[3] = "-";
         if (currentOperation !== null) calculate(userArray, currentOperation);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         currentOperation = "subtract";
         break;
       case "*":
@@ -313,12 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentArrayPosition = 2;
         userArray[3] = "*";
         if (currentOperation !== null) calculate(userArray, currentOperation);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         currentOperation = "multiply";
         break;
       case "/":
@@ -326,12 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentArrayPosition = 2;
         userArray[3] = "/";
         if (currentOperation !== null) calculate(userArray, currentOperation);
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         currentOperation = "divide";
         break;
       case "Enter":
@@ -340,23 +246,13 @@ document.addEventListener("DOMContentLoaded", function () {
           displayFirstNumber.style.setProperty("--color", "#f7768e");
         } else calculate(userArray, currentOperation);
         userArray[3] = "=";
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         currentArrayPosition = 1;
         currentOperation = null;
         break;
       case "Delete":
         userArray = ["0", "", "", ""];
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         currentArrayPosition = 1;
         currentOperation = null;
         displayFirstNumber.style.setProperty("--color", "#f0f6f0");
@@ -373,12 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
           userArray[2] = userArray[2].slice(0, -1);
           if (userArray[2].length === 0) userArray[2] = "";
         }
-        display(
-          userArray,
-          displayFirstNumber,
-          displaySecondNumber,
-          displayOperator,
-        );
+        display(userArray, displayFirstNumber, displaySecondNumber, displayOperator);
         break;
     }
   }
